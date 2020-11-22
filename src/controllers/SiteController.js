@@ -1,3 +1,6 @@
+const Product = require('../models/Product');
+
+
 class SiteController{
 
     //[GET/register]
@@ -10,8 +13,13 @@ class SiteController{
         res.render('login');
     }
     //[GET/HOME]
-    home(req, res){
-        res.render('home');
+    home(req, res, next){
+        Product.find({})
+            .then(products => {
+                products = products.map(products => products.toObject())
+                res.render('home', { products });
+            })
+            .catch(next);
     }
 }
 
