@@ -1,5 +1,5 @@
 const Product = require('../models/Product');
-
+const { mongoosesToObject } = require('../util/mongoose');
 
 class SiteController{
 
@@ -16,8 +16,9 @@ class SiteController{
     home(req, res, next){
         Product.find({})
             .then(products => {
-                products = products.map(products => products.toObject())
-                res.render('home', { products });
+                res.render('home', {
+                    products: mongoosesToObject(products)
+                });
             })
             .catch(next);
     }

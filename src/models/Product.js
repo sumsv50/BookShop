@@ -7,8 +7,11 @@ const Product = new Schema({
   name: String,
   price: String,
   img: String,
+  slug: String,
+  author:String,
+  detail: Object,
   createAt: {type: Date, default: Date.now},
   updateAt: {type: Date, default: Date.now},
 });
-
+// Model name => collection
 module.exports = mogoose.model('Product', Product);

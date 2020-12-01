@@ -318,6 +318,11 @@
 
 
 //--------- single top product ----------//
+.card-img{
+	height: 350px;
+	object-fit:  scale-down;
+}
+
 .single-search-product {
   padding: 10px 0;
   @media(min-width: 1000px){
